@@ -21,6 +21,10 @@
       #map {
         height: 750px;
        }
+       body {
+        margin-top: 100px;
+       }
+       
     </style>
 
 
@@ -35,24 +39,47 @@
     ?>
 
 
-    <div class="row">   
+    <div class="row">  
+
+        <div id="map" class="col-md-8">
+            <?php
+                require_once 'map.php';
+            ?>
+
+        </div>
+
+
         <div class="col-md-3" style="margin: 75px 20px 0px 20px; border: 3px white solid;">
             <h2 style="color: white;">My trip</h2>
 
             <?php
-               /*read from the file the serialized array and unserialize it */
-                $str = file_get_contents('trip.txt');
-                $arr = unserialize($str);
-                foreach ($arr as $value) {
-                    echo $value . "<br>";
+
+            /*read from the db the serialized array and unserialize it */
+                require_once 'db_connect.php';
+
+                if(isset($_COOKIE['UserId']))
+                {
+                    $id = $_COOKIE['UserId'];
+                    $sql = "SELECT CONVERT(trip_sum USING utf8) as 'trip', trip_sum FROM trip where user_id=$id";
+
+                    $result = $conn->query($sql);
+                    
+                    /*foreach ($result as $row) {
+                        $test = print_r($row);
+                        //echo $test;
+                        foreach($row as $unser){
+                            echo unserialize($unser);
+                        }
+                    }*/
+
+                    /*$arr = unserialize($result['trip']);
+                    echo $arr;*/
                 }
             ?>
 
 
         </div>
-        <div id="map" class="col-md-8">
-            <?php require_once 'map.php'; ?>
-        </div>
+        
         
     </div>
 

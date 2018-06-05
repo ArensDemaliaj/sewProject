@@ -1,19 +1,28 @@
+<?php
+    require_once 'db_connect.php';
+
+        ?>
 <script>
 
-    function initMap(<?php echo $var; ?> ,var _lat,var _lng, var _place) {
+    
+    function initMap(_lat, _lng) {
 
     var options = {
         zoom: 13,
-        center: {lat: 42.0693, lng: 19.5033}
+        center: {lat: 43, lng: 23}
     }
     
     var map = new google.maps.Map(document.getElementById('map'),options);
 
+  
+    
     addMarker({
         coords:{lat: _lat, lng: _lng},
         content: 
-        '<button type="button" class="btn btn-primary" onclick="addToArray();" > <a href="addToArray.php?place=_place"> Add this place</button>'
+        '<button type="button" class="btn btn-primary" onclick="addToArray();" >Add this place</button>'
     });
+
+    
     
     //Add Marker Funktion
 
@@ -41,6 +50,36 @@
         window.location.href='addToArray.php?place=shkoder';
     }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBCgoc2A07OOwHvN8fFW1wmqlq-SHYloKc &callback=initMap">
+
+
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBYORzYj-KDyeRIWGey5paMtaDtDqesTgA"></script>
+
+    <script>
+    initMap(43, 23);
+    initMap(43.5, 23.5);
     </script>
+<?php
+/*
+$sql = "SELECT * FROM maps_point";
+
+$result = $conn->query($sql);
+foreach($result as $row)
+        {
+        
+
+
+        
+
+?>
+    initMap
+    (
+        <? echo $row['lat'];?>,
+        <? echo "23";?>
+    );
+     alert('aro');
+     
+<?php
+        }
+?>
+*/
+</script>

@@ -19,6 +19,7 @@ fclose($myfile);
 
 
 /*insert to db */
+if(isset($_COOKIE["UserId"])){
 $user_id = $_COOKIE['UserId'];
 $trip = serialize($arr);
 
@@ -31,7 +32,10 @@ $stmd->execute();
 
 /*Redirect to home page*/
 header("Location: index.php"); 
-
+}
+else{
+header("Location: login.php?error=1"); 
+}
 
 
 ?>
