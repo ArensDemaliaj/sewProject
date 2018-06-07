@@ -64,13 +64,13 @@
 
                     $result = $conn->query($sql);
                     
-                    /*foreach ($result as $row) {
+                    foreach ($result as $row) {
                         $test = print_r($row);
                         //echo $test;
                         foreach($row as $unser){
                             echo unserialize($unser);
                         }
-                    }*/
+                    }
 
                     /*$arr = unserialize($result['trip']);
                     echo $arr;*/

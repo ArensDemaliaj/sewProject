@@ -11,7 +11,6 @@ $arr = unserialize($str);
 $place = $_GET["place"];
 array_push($arr, $place);
 
-
 /*write to the file the serilized array*/
 $myfile = fopen("trip.txt", "w");
 fwrite($myfile, serialize($arr));
@@ -30,7 +29,7 @@ $stmd->bindParam(":trip", $trip);
 $stmd->execute();
 
 
-/*Redirect to home page*/
+//Redirect to home page
 header("Location: index.php"); 
 }
 else{
